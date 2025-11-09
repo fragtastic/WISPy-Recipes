@@ -1,8 +1,8 @@
 {
 	"ingredientPattern": "SMK,PBP,PIP",
 	"ingredients": {
-		"S": { "type": "item", "code": "game:*-shears", "name": "Shears", "isTool": true, "toolDurabilityCost": 10 },
-		"K": { "type": "item", "code": "game:sewingkit" },
+		"S": { "type": "item", "code": "game:shears-*", "name": "Shears", "isTool": true, "toolDurabilityCost": 1 },
+		"K": { "type": "item", "code": "game:sewingkit", "quantity": 1 },
     "M": { "type": "item", "code": "game:metalnailsandstrips-*", "name":"Metal Nails and Strips", "quantity": 1 },
     "P": { "type": "item", "code": "abcsredux:sturdyleatherpouch", "quantity": 1 },
     "I": { "type": "item", "code": "game:metalplate-iron", "quantity": 1 },
