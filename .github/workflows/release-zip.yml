@@ -1,0 +1,52 @@
+name: Release zip
+
+on:
+  workflow_dispatch: # run manually
+  push:
+    branches: [ main ] # optional—run on main branch pushes if you like
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read version and metadata from modinfo.json
+        id: modinfo
+        run: |
+          VERSION=$(jq -r '.version' modinfo.json)
+          MODID=$(jq -r '.modid' modinfo.json)
+          NAME=$(jq -r '.name' modinfo.json)
+
+          if [ -z "$VERSION" ] || [ "$VERSION" = "null" ]; then
+            echo "❌ version missing in modinfo.json" >&2
+            exit 1
+          fi
+
+          TAG="v${VERSION}"
+          ZIP_NAME="${MODID:-${NAME}}-${VERSION}.zip"
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "zip=$ZIP_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Create zip of mod contents
+        run: |
+          zip -r "${{ steps.modinfo.outputs.zip }}" . -x ".git/*" ".github/*"
+
+      - name: Create GitHub release and upload zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.modinfo.outputs.tag }}
+          name: "${{ steps.modinfo.outputs.tag }}"
+          body: |
+            Automated release for version ${{ steps.modinfo.outputs.version }}.
+          files: |
+            ${{ steps.modinfo.outputs.zip }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
