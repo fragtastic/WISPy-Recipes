@@ -1,0 +1,23 @@
+{
+  "ingredient": {
+    "type": "item",
+    "code": "game:ingot-*",
+    "name": "metal",
+    "allowedVariants": [ "copper", "brass", "tinbronze", "bismuthbronze", "blackbronze", "silver", "gold", "iron", "lead", "tin", "zinc", "bismuth", "chromium", "electrum", "platinum", "titanium", "molybdochalkos", "meteoriciron", "steel" ]
+  },
+  "name": "knives",
+  "pattern": [
+    [
+      "###########",
+      "_____######",
+      "___________",
+      "###########",
+      "_____######"
+    ]
+  ],
+  "output": {
+    "type": "item",
+    "code": "game:knifeblade-{metal}",
+    "quantity": 2
+  }
+}
