@@ -1,21 +1,14 @@
 {
-  "enabled": true,
-  "recipeid": "wispyrecipes:abcsredux_ultra_leather_lantern_to_ultra_sturdy_lantern",
-  "width": 3,
-  "height": 3,
-  "shapeless": false,
-  "pattern": [
-    "SMK",
-    "PBP",
-    "PIP"
-  ],
-  "ingredientpattern": {
-    "S": { "type": "item", "code": "game:*-shears", "isTool": true, "toolDurabilityCost": 1 }, 
-    "K": { "type": "item", "code": "game:sewingkit", "quantity": 1 },
-    "M": { "type": "item", "code": "game:metalnailsandstrips-*", "quantity": 1 },
+	"ingredientPattern": "SMK,PBP,PIP",
+	"ingredients": {
+		"S": { "type": "item", "code": "game:*-shears", "name": "Shears", "isTool": true, "toolDurabilityCost": 10 },
+		"K": { "type": "item", "code": "game:sewingkit" },
+    "M": { "type": "item", "code": "game:metalnailsandstrips-*", "name":"Metal Nails and Strips", "quantity": 1 },
     "P": { "type": "item", "code": "abcsredux:sturdyleatherpouch", "quantity": 1 },
     "I": { "type": "item", "code": "game:metalplate-iron", "quantity": 1 },
     "B": { "type": "item", "code": "abcsredux:ultraleatherbackpack-lantern", "quantity": 1 }
-  },
-  "output": { "type": "item", "code": "abcsredux:ultrasturdybackpack-lantern", "quantity": 1 }
+	},
+	"width": 3,
+	"height": 3,
+	"output": { "type": "item", "code": "abcsredux:ultrasturdybackpack-lantern", "quantity": 1 }
 }
